@@ -37,7 +37,7 @@ CREATE TABLE products (
 CREATE TABLE orders (
     order_no   SERIAL    PRIMARY KEY,
     order_date DATE      NOT NULL,
-    cust_no    INTEGER   NOT NULL,
+    cust_no    INTEGER ,
     CONSTRAINT fk_orders_customer
         FOREIGN KEY (cust_no)
         REFERENCES customers(cust_no)

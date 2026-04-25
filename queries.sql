@@ -22,7 +22,7 @@ FROM customers c
 JOIN orders o ON c.cust_no = o.cust_no
 JOIN order_details od ON o.order_no = od.order_no
 JOIN products p ON od.prod_code = p.prod_code
-WHERE p.description = 'Almond-Choco'
+WHERE p.description ILIKE '%Almond-Choco%'
   AND EXTRACT(MONTH FROM o.order_date) = 4
   AND EXTRACT(YEAR  FROM o.order_date) = 2025;
 
@@ -40,7 +40,7 @@ SELECT o.order_no, SUM(od.order_qty * od.order_price) AS order_value
 FROM orders o
 JOIN order_details od ON o.order_no = od.order_no
 JOIN products p ON od.prod_code = p.prod_code
-WHERE p.description = 'OrangeChoco'
+WHERE p.description ILIKE '%Orange%'
 GROUP BY o.order_no
 ORDER BY order_value DESC
 LIMIT 1;
@@ -183,7 +183,7 @@ FROM customers c
 JOIN orders o ON c.cust_no = o.cust_no
 JOIN order_details od ON o.order_no = od.order_no
 JOIN products p ON od.prod_code = p.prod_code
-WHERE c.town = 'Xanthi';
+WHERE c.town = 'Ξάνθη';
 
 -- Q20: Ποιο είναι το μέγιστο ποσό κατά το οποίο ένας πελάτης υπερβαίνει το πιστωτικό του όριο;
 
